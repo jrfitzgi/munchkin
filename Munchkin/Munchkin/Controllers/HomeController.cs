@@ -10,7 +10,7 @@ namespace Munchkin.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "C# Munchkin";
+            ViewBag.Message = "C# Munchkin 2";
 
             return View();
         }
