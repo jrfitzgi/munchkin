@@ -15,9 +15,9 @@ namespace Munchkin.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult MapMe()
         {
-            ViewBag.Message = "Your app description page.";
+            ViewBag.Message = "Maps your co-ordinates";
 
             return View();
         }

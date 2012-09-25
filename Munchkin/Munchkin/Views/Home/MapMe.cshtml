@@ -1,0 +1,40 @@
+﻿@model Munchkin.Models.MapMeModel
+@{
+    ViewBag.Title = "Map Me";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+    <h2>@ViewBag.Message</h2>
+</hgroup>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Registration Form</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.UserInitials)
+                @Html.TextBoxFor(m => m.UserInitials)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Coordinates)
+                @Html.PasswordFor(m => m.Coordinates)
+            </li>
+
+        </ol>
+        <input type="submit" value="Map Me!" />
+        <p>
+            @*@Model.Coordinates*@
+            <img src="http://dev.virtualearth.net/REST/v1/Imagery/Map/Road/47.619048,-122.35384/15?mapSize=500,500&pp=47.619385,-122.351485;1;MU&pp=47.616295,-122.3556;20&key=Al_77WD32kn5BGT2yUKQl4TQAD8xAW9rNffJzPsh74pW2rbk8TkTNWYuO_-0-qDC" />
+        </p>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

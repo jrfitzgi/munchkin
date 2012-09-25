@@ -32,7 +32,7 @@ namespace Munchkin.Tests.Controllers
             HomeController controller = new HomeController();
 
             // Act
-            ViewResult result = controller.About() as ViewResult;
+            ViewResult result = controller.MapMe() as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);
