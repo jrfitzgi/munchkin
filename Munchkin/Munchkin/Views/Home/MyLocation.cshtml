@@ -10,29 +10,28 @@
 </hgroup>
 
 
-      <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+<script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
 
-      <script type="text/javascript">
-         
-         function GetMap()
-         {
-            
-            // Set the map options
-            var mapOptions = {credentials:"@Model.BingKey"};
+<script type="text/javascript">
 
-            // Initialize the map
-            var map = new Microsoft.Maps.Map(document.getElementById("mapDiv"), mapOptions);
+    function GetMap() {
 
-            // Initialize the location provider
-            var geoLocationProvider = new Microsoft.Maps.GeoLocationProvider(map);
+        // Set the map options
+        var mapOptions = { credentials: "@Model.BingKey" };
 
-            // Get the user's current location
-            geoLocationProvider.getCurrentPosition();
-          
+             // Initialize the map
+             var map = new Microsoft.Maps.Map(document.getElementById("mapDiv"), mapOptions);
+
+             // Initialize the location provider
+             var geoLocationProvider = new Microsoft.Maps.GeoLocationProvider(map);
+
+             // Get the user's current location
+             geoLocationProvider.getCurrentPosition();
+
          }
 
-      </script>
+</script>
 
-   <body onload="GetMap();">
-      <div id='mapDiv' style="position:relative; width:400px; height:400px;"></div>       
-   </body>
+<body onload="GetMap();">
+    <div id='mapDiv' style="position: relative; width: 400px; height: 400px;"></div>
+</body>
