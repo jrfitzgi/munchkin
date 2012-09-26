@@ -10,3 +10,10 @@ http://www.microsoft.com/maps/
 http://msdn.microsoft.com/en-us/library/ff701724.aspx
 http://www.bingmapsportal.com/isdk/ajaxv7#CreateMap1
 http://git-scm.com/book/en/Git-Basics-Working-with-Remotes
+
+Get Browser location
+http://msdn.microsoft.com/en-us/library/hh125833.aspx
+http://www.bingmapsportal.com/isdk/ajaxv7#GetUserLocation1
+
+VIM commands (use ESC to toggle command mode)
+http://www.tuxfiles.org/linuxhelp/vimcheat.html
