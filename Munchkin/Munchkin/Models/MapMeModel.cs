@@ -11,9 +11,13 @@ namespace Munchkin.Models
 {
     public class MapMeModel
     {
-        [Required]
+        [DataType(DataType.Text)]
         [Display(Name = "User Initials")]
         public string UserInitials { get; set; }
+
+        [DataType(DataType.Text)]
+        [Display(Name = "Zoom Level")]
+        public string ZoomLevel { get; set; }
 
         [Required]
         [DataType(DataType.Text)]
@@ -22,7 +26,9 @@ namespace Munchkin.Models
 
         public MapMeModel()
         {
-            this.Coordinates = "1,1";
+            this.UserInitials = "JF";
+            this.Coordinates = "47.619048,-122.35384";
+            this.ZoomLevel = "10";
         }
     }
 
