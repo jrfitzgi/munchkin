@@ -36,11 +36,11 @@ namespace Munchkin.Controllers
             return MapMe();
         }
 
-        public ActionResult Contact()
+        public ActionResult MyLocation()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "My Location";
 
-            return View();
+            return View(new MapMeModel());
         }
     }
 }

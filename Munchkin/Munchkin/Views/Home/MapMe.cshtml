@@ -24,16 +24,20 @@
                 @Html.LabelFor(m => m.Coordinates)
                 @Html.TextBoxFor(m => m.Coordinates)
             </li>
+            <li>
+                @Html.LabelFor(m => m.ZoomLevel)
+                @Html.TextBoxFor(m => m.ZoomLevel)
+            </li>
 
         </ol>
-        
+
         <input type="submit" value="Map Me!" />
 
     </fieldset>
 }
-        <p>        
-            <img src="http://dev.virtualearth.net/REST/v1/Imagery/Map/Road/@Model.Coordinates/@Model.ZoomLevel?mapSize=500,500&pp=@Model.Coordinates;;@Model.UserInitials&key=Al_77WD32kn5BGT2yUKQl4TQAD8xAW9rNffJzPsh74pW2rbk8TkTNWYuO_-0-qDC" />
-        </p>
+<p>
+    <img src="http://dev.virtualearth.net/REST/v1/Imagery/Map/Road/@Model.Coordinates/@Model.ZoomLevel?mapSize=500,500&pp=@Model.Coordinates;;@Model.UserInitials&key=@Model.BingKey" />
+</p>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

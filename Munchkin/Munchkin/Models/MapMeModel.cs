@@ -24,11 +24,19 @@ namespace Munchkin.Models
         [Display(Name = "Co-ordinates")]
         public string Coordinates { get; set; }
 
+        [DataType(DataType.Text)]
+        [Display(Name = "BingKey")]
+        public string BingKey { get; set; }
+
+
         public MapMeModel()
         {
+            BingKey = "Al_77WD32kn5BGT2yUKQl4TQAD8xAW9rNffJzPsh74pW2rbk8TkTNWYuO_-0-qDC";
+
             this.UserInitials = "JF";
             this.Coordinates = "47.619048,-122.35384";
             this.ZoomLevel = "10";
+
         }
     }
 

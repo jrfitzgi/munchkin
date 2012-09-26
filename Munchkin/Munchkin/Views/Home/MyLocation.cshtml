@@ -1,0 +1,38 @@
+﻿@model Munchkin.Models.MapMeModel
+
+@{
+    ViewBag.Title = "My Location";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+    <h2>@ViewBag.Message</h2>
+</hgroup>
+
+
+      <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+
+      <script type="text/javascript">
+         
+         function GetMap()
+         {
+            
+            // Set the map options
+            var mapOptions = {credentials:"@Model.BingKey"};
+
+            // Initialize the map
+            var map = new Microsoft.Maps.Map(document.getElementById("mapDiv"), mapOptions);
+
+            // Initialize the location provider
+            var geoLocationProvider = new Microsoft.Maps.GeoLocationProvider(map);
+
+            // Get the user's current location
+            geoLocationProvider.getCurrentPosition();
+          
+         }
+
+      </script>
+
+   <body onload="GetMap();">
+      <div id='mapDiv' style="position:relative; width:400px; height:400px;"></div>       
+   </body>
