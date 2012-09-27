@@ -1,0 +1,19 @@
+http://dev.virtualearth.net/REST/v1/Imagery/Map/imagerySet?mapArea=45.219,-122.325,47.610,-122.107&format=jpeg&key=Al_77WD32kn5BGT2yUKQl4TQAD8xAW9rNffJzPsh74pW2rbk8TkTNWYuO_-0-qDC
+
+http://dev.virtualearth.net/REST/v1/Imagery/Map/imagerySet?mapArea=45.219,-122.325,47.610,-122.107&mapSize=100,600&pushpin=46.219,-121.325;5;P10&mapLayer=mapLayer&format=jpeg&mapMetadata=0&key=Al_77WD32kn5BGT2yUKQl4TQAD8xAW9rNffJzPsh74pW2rbk8TkTNWYuO_-0-qDC
+
+http://dev.virtualearth.net/REST/v1/Imagery/Map/imagerySet/centerPoint/zoomLevel?zoomLevel=10&key=Al_77WD32kn5BGT2yUKQl4TQAD8xAW9rNffJzPsh74pW2rbk8TkTNWYuO_-0-qDC
+
+http://dev.virtualearth.net/REST/V1/Imagery/Map/Road/space%20needle%20seattle?mapLayer=TrafficFlow&key=Al_77WD32kn5BGT2yUKQl4TQAD8xAW9rNffJzPsh74pW2rbk8TkTNWYuO_-0-qDC
+
+http://www.microsoft.com/maps/
+http://msdn.microsoft.com/en-us/library/ff701724.aspx
+http://www.bingmapsportal.com/isdk/ajaxv7#CreateMap1
+http://git-scm.com/book/en/Git-Basics-Working-with-Remotes
+
+Get Browser location
+http://msdn.microsoft.com/en-us/library/hh125833.aspx
+http://www.bingmapsportal.com/isdk/ajaxv7#GetUserLocation1
+
+VIM commands (use ESC to toggle command mode)
+http://www.tuxfiles.org/linuxhelp/vimcheat.html
