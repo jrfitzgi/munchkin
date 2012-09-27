@@ -39,13 +39,13 @@ namespace Munchkin.Tests.Controllers
         }
 
         [TestMethod]
-        public void Contact()
+        public void MyLocation()
         {
             // Arrange
             HomeController controller = new HomeController();
 
             // Act
-            ViewResult result = controller.Contact() as ViewResult;
+            ViewResult result = controller.MyLocation() as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);

@@ -14,6 +14,10 @@ http://git-scm.com/book/en/Git-Basics-Working-with-Remotes
 Get Browser location
 http://msdn.microsoft.com/en-us/library/hh125833.aspx
 http://www.bingmapsportal.com/isdk/ajaxv7#GetUserLocation1
+http://code.google.com/p/geo-location-javascript/
+http://www.infoworld.com/d/html5/html5-in-the-web-browser-geolocation-javascript-and-html5-extras-398?page=0,1
+http://dev.w3.org/geo/api/spec-source.html
+http://dev.opera.com/articles/view/how-to-use-the-w3c-geolocation-api/
 
 VIM commands (use ESC to toggle command mode)
 http://www.tuxfiles.org/linuxhelp/vimcheat.html

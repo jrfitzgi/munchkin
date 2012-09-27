@@ -14,6 +14,26 @@
 
 <script type="text/javascript">
 
+    function successFunction(position) {
+        var lat = position.coords.latitude;
+        var long = position.coords.longitude;
+        alert('Your latitude is :' + lat + ' and longitude is ' + long);
+    }
+
+    function errorFunction(position) {
+        alert('Error!');
+    }
+
+    function GetGeoLocation() {
+
+        //Check if browser supports W3C Geolocation API
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
+        } else {
+            alert('It seems like Geolocation, which is required for this page, is not enabled in your browser. Please use a browser which supports it.');
+        }
+    }
+
     function GetMap() {
 
         // Set the map options
@@ -32,6 +52,6 @@
 
 </script>
 
-<body onload="GetMap();">
+<body onload="GetMap();GetGeoLocation();">
     <div id='mapDiv' style="position: relative; width: 400px; height: 400px;"></div>
 </body>
