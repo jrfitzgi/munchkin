@@ -10,6 +10,10 @@
 
 <script type="text/javascript">
 
+    var lat;
+    var long;
+    var coords;
+
     //Check if browser supports W3C Geolocation API
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
@@ -20,8 +24,8 @@
 
 
     function successFunction(position) {
-        var lat = position.coords.latitude;
-        var long = position.coords.longitude;
+        lat = position.coords.latitude;
+        long = position.coords.longitude;
 
         var thediv = document.getElementById('mylocation');
         thediv.innerText = '<p>Your longitude is :' +
@@ -33,13 +37,27 @@
             ';;@Model.UserInitials&key=@Model.BingKey" /'
         ;
 
-        alert('Your latitude is :' + lat + ' and longitude is ' + long)
+        coords = lat + ";" + long;
+
+        //alert('Your latitude is :' + lat + ' and longitude is ' + long)
+        initializeTextBox();
+    }
+
+    function loadMap() {
+        document.getElementById("map").src = "http://dev.virtualearth.net/REST/v1/Imagery/Map/Road/" + coords + "/@Model.ZoomLevel?mapSize=500,500&pp=" + coords + ";;@Model.UserInitials&key=@Model.BingKey";
+    }
+
+    function initializeTextBox() {
+
+        document.getElementById("Coordinates").value = coords;
 
     }
 
     function errorFunction(position) {
         alert('Error!');
     }
+
+
 
 </script>
 
@@ -57,7 +75,6 @@
         <li>
             @Html.LabelFor(m => m.Coordinates)
             @Html.TextBoxFor(m => m.Coordinates)
-            lat;long
         </li>
         <li>
             @Html.LabelFor(m => m.ZoomLevel)
@@ -66,16 +83,16 @@
 
     </ol>
 
-    <input type="submit" value="Map Me!" />
+    <input type="submit" value="Map Me!" onclick="loadMap" />
 
 </fieldset>
 
 <p>
-    <img src="http://dev.virtualearth.net/REST/v1/Imagery/Map/Road/@Model.Coordinates/@Model.ZoomLevel?mapSize=500,500&pp=@Model.Coordinates;;@Model.UserInitials&key=@Model.BingKey" />
+    <img id="map" src="http://dev.virtualearth.net/REST/v1/Imagery/Map/Road/@Model.Coordinates/@Model.ZoomLevel?mapSize=500,500&pp=@Model.Coordinates;;@Model.UserInitials&key=@Model.BingKey" />
 </p>
 <div id="mylocation"></div>
 
-
+<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fmunchkin.azurewebsites.net&amp;send=false&amp;layout=standard&amp;width=450&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:80px;" allowTransparency="true"></iframe>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

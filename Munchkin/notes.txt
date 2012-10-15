@@ -21,3 +21,8 @@ http://dev.opera.com/articles/view/how-to-use-the-w3c-geolocation-api/
 
 VIM commands (use ESC to toggle command mode)
 http://www.tuxfiles.org/linuxhelp/vimcheat.html
+
+Facebook Integration
+http://developers.facebook.com/docs/guides/web/
+
+
