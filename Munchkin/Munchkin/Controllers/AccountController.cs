@@ -46,6 +46,17 @@ namespace Munchkin.Controllers
         }
 
         //
+        // GET: /Account/FBLogin
+
+        [AllowAnonymous]
+        public ActionResult FBLogin(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+
+
+        //
         // POST: /Account/LogOff
 
         [HttpPost]
