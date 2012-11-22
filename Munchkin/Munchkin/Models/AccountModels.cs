@@ -12,7 +12,7 @@ namespace Munchkin.Models
     public class UsersContext : DbContext
     {
         public UsersContext()
-            : base("Server=tcp:po0r1ok0xp.database.windows.net,1433;Database=munchkindb;User ID=readonlylogin@po0r1ok0xp;Password=Password1;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;")
+            : base("DefaultConnection")
         {
         }
 
