@@ -53,7 +53,7 @@
               });
           }
 
-          //https://www.facebook.com/dialog/oauth?client_id=360614837364165&redirect_uri=http://munchkin.azurewebsites.net&scope=email,read_stream&response_type=token
+          //https://www.facebook.com/dialog/oauth?client_id=360614837364165&redirect_uri=http://munchkin.azurewebsites.net/Account/FBLogin&scope=email,read_stream&response_type=token
           function picture() {
               FB.api('/me', function (user) {
                   if (user) {

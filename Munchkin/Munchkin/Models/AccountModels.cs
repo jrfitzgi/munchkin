@@ -12,7 +12,11 @@ namespace Munchkin.Models
     public class UsersContext : DbContext
     {
         public UsersContext()
+<<<<<<< HEAD
             : base("MunchkinDB")
+=======
+            : base("DefaultConnection")
+>>>>>>> bd5534396ab97e58e7a737c98ed8a6418bfc40de
         {
         }
 
