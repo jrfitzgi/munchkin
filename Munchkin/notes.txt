@@ -25,4 +25,9 @@ http://www.tuxfiles.org/linuxhelp/vimcheat.html
 Facebook Integration
 http://developers.facebook.com/docs/guides/web/
 
+http://blog.smarx.com/posts/custom-domain-names-in-windows-azure
 
+
+sql azure security
+http://blogs.msdn.com/b/sqlazure/archive/2010/06/21/10028038.aspx
+http://technet.microsoft.com/en-us/magazine/hh351833.aspx

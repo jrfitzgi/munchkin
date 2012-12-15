@@ -1,0 +1,157 @@
+﻿@{
+    ViewBag.Title = "FBLogin";
+}
+
+<h2>FBLogin</h2>
+
+
+
+      <div id="fb-root"></div>
+      <script>
+          window.fbAsyncInit = function () {
+              FB.init({
+                  appId: '360614837364165', // App ID
+                  channelUrl: '//www.wheresmyboo.com/channel.html', // Channel File
+                  status: true, // check login status
+                  cookie: true, // enable cookies to allow the server to access the session
+                  xfbml: true  // parse XFBML
+              });
+
+              FB.getLoginStatus(function (response) {
+                  if (response.status === 'connected') {
+                      // connected
+                  } else if (response.status === 'not_authorized') {
+                      // not_authorized
+                      login();
+                  } else {
+                      // not_logged_in
+                      login();
+                  }
+              });
+
+
+
+          };
+          // Load the SDK Asynchronously
+          (function (d) {
+              var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+              if (d.getElementById(id)) { return; }
+              js = d.createElement('script'); js.id = id; js.async = true;
+              js.src = "//connect.facebook.net/en_US/all.js";
+              ref.parentNode.insertBefore(js, ref);
+          }(document));
+
+
+          function login() {
+              FB.login(function (response) {
+                  if (response.authResponse) {
+                      // connected
+                      testAPI();
+                  } else {
+                      // cancelled
+                  }
+              });
+          }
+
+          //https://www.facebook.com/dialog/oauth?client_id=360614837364165&redirect_uri=http://munchkin.azurewebsites.net/Account/FBLogin&scope=email,read_stream&response_type=token
+          function picture() {
+              FB.api('/me', function (user) {
+                  if (user) {
+                      var image = document.getElementById('image');
+                      image.src = 'http://graph.facebook.com/' + user.id + '/picture';
+                      var significant_other = user.relationship_status;
+                      var name = document.getElementById('name');
+                      name.innerHTML = user.name + ' loves ' + significant_other
+                  }
+              });
+          }
+
+
+          function testAPI() {
+              console.log('Welcome!  Fetching your information.... ');
+              FB.api('/me', function (response) {
+                  console.log('Good to see you, ' + response.name + '.');
+              });
+          }
+      </script>
+
+<button type="button" onclick="login()">FB Login</button>
+
+<button type="button" onclick="picture()">Picture</button>
+
+      <div align="center">
+        <img id="image"/>
+        <div id="name"></div>
+      </div>
+
+
+
+@*    <div id="fb-root"></div>
+<script>
+    // Additional JS functions here
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '360614837364165', // App ID
+            channelUrl: '//www.wheresmyboo.com/channel.html', // Channel File
+            status: true, // check login status
+            cookie: true, // enable cookies to allow the server to access the session
+            xfbml: true  // parse XFBML
+        });
+
+        // Additional init code here
+
+
+        FB.getLoginStatus(function(response) {
+            if (response.status === 'connected') {
+                // connected
+            } else if (response.status === 'not_authorized') {
+                // not_authorized
+                login();
+            } else {
+                // not_logged_in
+                login();
+            }
+        });
+    };
+
+
+    // Load the SDK Asynchronously
+    (function (d) {
+        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement('script'); js.id = id; js.async = true;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        ref.parentNode.insertBefore(js, ref);
+    }(document));
+
+
+
+    function login() {
+        FB.login(function(response) {
+            if (response.authResponse) {
+                // connected
+                testAPI();
+            } else {
+                // cancelled
+            }
+        });
+    }
+
+
+    function testAPI() {
+        console.log('Welcome!  Fetching your information.... ');
+        FB.api('/me', function(response) {
+            console.log('Good to see you, ' + response.name + '.');
+        });
+    }
+
+
+
+
+</script>
+
+<button type="button" onclick="login()">FB Login</button>
+
+
+
+*@
