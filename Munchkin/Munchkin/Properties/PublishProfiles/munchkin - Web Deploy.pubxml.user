@@ -8,10 +8,6 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <LastUsedBuildConfiguration>Release</LastUsedBuildConfiguration>
     <LastUsedPlatform>Any CPU</LastUsedPlatform>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-<<<<<<< HEAD
-    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAATymKNKU3tkKH78jkUqlZdQAAAAACAAAAAAAQZgAAAAEAACAAAADhhhM//5UsW8WIXWZiSoWrKUQYr4dghsUk3rqPO6Ek0AAAAAAOgAAAAAIAACAAAACyLTbVExATXemEmps0hfPsSiGOYy9XLjVriiV/oltMIiAAAADONNYDRGBF/P3kk+Hsvh1NbVPBqIxIfheXTrfgxDpUKEAAAAA0eEjYxS0bX34p12TUoGPSwObJ4b9fORmQ8M6CEvS+syDE+ZSZ9LSar7NksXAvvCe0XyCZsWBj5WkXCvbUgBt1</EncryptedPassword>
-=======
-    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADfEe7TUX60O0FjIRbyV8YgAAAAACAAAAAAADZgAAwAAAABAAAACgQA3hVvbeiXB8di3J1psCAAAAAASAAACgAAAAEAAAAFWlS9dDx1Ar+ek77OVb0MeAAAAAey+M/A6OHRB2aEKz8m6ie5dSB3UXx2AydZrYaeaU5ozuIIBQMhp9cq5QhAoNYHLou4a1z7v6N0urcT6SJNvSaVa1FcHsAZOk0o46pM+FOrJ59CMOUxWrNIbQ3y/RiRzsRuKrN8FmiVgJ2SIAyAhcJ4/bTnHj4U9fBtoU6wp9XZQUAAAA0MO45Xp+A2Z/nX+7bWVmWGSTT6A=</EncryptedPassword>
->>>>>>> c54bcd808ac99bbf65827ee79f2c3e74f4d83148
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAATymKNKU3tkKH78jkUqlZdQAAAAACAAAAAAAQZgAAAAEAACAAAACvDOmjXkSjbay6wnW4SqBkLimxTuV390g7vdbi7ekIIgAAAAAOgAAAAAIAACAAAAC3QHI7c3SNv6nA/JEUcl377Vk3EEwHZxlCcCtgAqL6TyAAAAC32ICE1d0oz3BaYK1tj1EKab42XzfT9Z2/D1tn7GABRkAAAAD2LI5kC2TEgAdX9YAVaU1d3OmKzYoNV8E62cE+hTr5kYw9DHVeJYatHsKWGWuLbr2MDkLzZsPHVzcPxrzmcqcj</EncryptedPassword>
   </PropertyGroup>
 </Project>
