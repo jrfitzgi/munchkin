@@ -12,8 +12,8 @@ namespace Munchkin.Models
     public class UsersContext : DbContext
     {
         public UsersContext()
-            //: base("MunchkinDB")
-            : base("DefaultConnection")
+            : base("MunchkinDB")
+            //: base("DefaultConnection")
         {
         }
 
