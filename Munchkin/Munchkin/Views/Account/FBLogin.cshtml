@@ -79,6 +79,10 @@
 
 <button type="button" onclick="picture()">Picture</button>
 
+@{string facebookLoginUrl = Url.RouteUrl(new {controller = "Account", action = "FacebookLogin"});}
+<a href ="@facebookLoginUrl">Log in with Facebook</a>
+
+
       <div align="center">
         <img id="image"/>
         <div id="name"></div>

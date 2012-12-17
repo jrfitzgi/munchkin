@@ -11,12 +11,104 @@ using WebMatrix.WebData;
 using Munchkin.Filters;
 using Munchkin.Models;
 
+using System.Net; // web request
+using System.IO; // streams
+using System.Text; // encoding
+using System.Runtime.Serialization.Json; // Json
+
 namespace Munchkin.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [InitializeSimpleMembership]
     public class AccountController : Controller
     {
+
+        //this is the statically typed representation of the JSON object that will get returned from: https://graph.facebook.com/me
+        public class FacebookUser
+        {
+
+            public long id { get; set; } //yes. the user id is of type long...dont use int
+
+            public string first_name { get; set; }
+
+            public string last_name { get; set; }
+
+            public string name { get; set; }
+
+            public string email { get; set; }
+        }
+
+
+        //this controller action will be called when Facebook redirects
+        [HttpGet]
+        [ActionName("handshake")]
+        public ActionResult handshake(string code)
+        {
+            //after authentication, Facebook will redirect to this controller action with a QueryString parameter called "code" (this is Facebook's Session key)
+
+            //example uri: http://www.examplewebsite.com/facebook/handshake/?code=2.DQUGad7_kFVGqKTeGUqQTQ__.3600.1273809600-1756053625|dil1rmAUjgbViM_GQutw-PEgPIg.
+
+            //this is your Facebook App ID
+            string clientId = "360614837364165";
+
+            //this is your Secret Key
+            string clientSecret = "b74265594721c75fe7f484db4d644979";
+
+            //we have to request an access token from the following Uri
+            string url = "https://graph.facebook.com/oauth/access_token?client_id={0}&redirect_uri={1}&client_secret={2}&code={3}";
+
+            //your redirect uri must be EXACTLY the same Uri that caused the initial authentication handshake
+            string redirectUri = "http://munchkin.azurewebsites.net/Account/handshake";
+
+            //Create a webrequest to perform the request against the Uri
+            WebRequest request = WebRequest.Create(string.Format(url, clientId, redirectUri, clientSecret, code));
+
+            //read out the response as a utf-8 encoding and parse out the access_token
+            WebResponse response = request.GetResponse();
+            Stream stream = response.GetResponseStream();
+            Encoding encode = System.Text.Encoding.GetEncoding("utf-8");
+            StreamReader streamReader = new StreamReader(stream, encode);
+            string accessToken = streamReader.ReadToEnd().Replace("access_token=", "");
+            streamReader.Close();
+            response.Close();
+
+            //set the access token to some session variable so it can be used through out the session
+            Session["FacebookAccessToken"] = accessToken;
+
+            //now that we have an access token, query the Graph Api for the JSON representation of the User
+            string urlForUserInfo = "https://graph.facebook.com/me?access_token={0}";
+
+            //create the request to https://graph.facebook.com/me
+            request = WebRequest.Create(string.Format(urlForUserInfo, accessToken));
+
+            //Get the response
+            response = request.GetResponse();
+
+            //Get the response stream
+            Stream stream2 = response.GetResponseStream();
+
+            //Take our statically typed representation of the JSON User and deserialize the response stream
+            //using the DataContractJsonSerializer
+            DataContractJsonSerializer dataContractJsonSerializer = new DataContractJsonSerializer(typeof(FacebookUser));
+            FacebookUser user = new FacebookUser();
+            user = dataContractJsonSerializer.ReadObject(stream2) as FacebookUser;
+
+            //close the stream
+            response.Close();
+
+            //capture the UserId
+            Session["FacebookUserId"] = user.id;
+
+            //Set the forms authentication auth cookie
+            FormsAuthentication.SetAuthCookie(user.email, false);
+
+            //redirect to home page so that user can start using your application      
+            return RedirectToAction("FBLogin", "Account");
+        }
+
+
+
+
         //
         // GET: /Account/Login
 
@@ -47,14 +139,26 @@ namespace Munchkin.Controllers
 
         //
         // GET: /Account/FBLogin
-
+        [HttpGet]
         [AllowAnonymous]
+        [ActionName("FBLogin")]
         public ActionResult FBLogin(string returnUrl)
         {
+
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
+        //
+        // GET: /Account/FacebookLogins
+        [HttpGet]
+        [AllowAnonymous]
+        [ActionName("FacebookLogin")]
+        public ActionResult FacebookLogin()
+        {
+            // Redirect to https://graph.facebook.com/oauth/authorize with my fb app Id, redirect url and request type
+            return new RedirectResult("https://graph.facebook.com/oauth/authorize?type=web_server&client_id=360614837364165&redirect_uri=http://munchkin.azurewebsites.net/Account/handshake");
+        }
 
         //
         // POST: /Account/LogOff
