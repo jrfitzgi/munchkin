@@ -38,6 +38,21 @@ namespace Munchkin.Controllers
             public string email { get; set; }
         }
 
+        public class FacebookUserWithSO
+        {
+            public long id { get; set; }
+            public string name { get; set; }
+
+            public FacebookSO facebookSO { get; set; }
+        }
+
+        public class FacebookSO
+        {
+            public long id { get; set; }
+            public string name { get; set; }
+
+        }
+
 
         //this controller action will be called when Facebook redirects
         [HttpGet]
@@ -102,10 +117,47 @@ namespace Munchkin.Controllers
             //Set the forms authentication auth cookie
             FormsAuthentication.SetAuthCookie(user.email, false);
 
+            
             //redirect to home page so that user can start using your application      
-            return RedirectToAction("FBLogin", "Account");
+            return RedirectToAction("getso", "Account");
         }
 
+        [HttpGet]
+        public string getso()
+        {
+            string accessToken = Session["FacebookAccessToken"].ToString();
+
+            //now that we have an access token, query the Graph Api for the JSON representation of the User
+            string urlForUserInfo = "https://graph.facebook.com/122607660?fields=id,name,significant_other&access_token={0}";
+
+            
+            //create the request to https://graph.facebook.com/me
+            WebRequest request = WebRequest.Create(string.Format(urlForUserInfo, accessToken));
+
+            //Get the response
+            WebResponse response = request.GetResponse();
+
+            //Get the response stream
+            Stream stream = response.GetResponseStream();
+
+            StreamReader sr = new StreamReader(stream);
+            string text = sr.ReadToEnd();
+
+            //string text = @"{  ""id"": ""122607660"", ""name"":""Jordan Fitzgibbon"",""significant_other"": {""name"":""Monika Hin"", ""id"":""1793340565"" }}";
+
+            ////Take our statically typed representation of the JSON User and deserialize the response stream
+            ////using the DataContractJsonSerializer
+            //DataContractJsonSerializer dataContractJsonSerializer = new DataContractJsonSerializer(typeof(FacebookUserWithSO));
+            //FacebookUserWithSO fbso = new FacebookUserWithSO();
+            //fbso = dataContractJsonSerializer.ReadObject(stream) as FacebookUserWithSO;
+
+            ////close the stream
+            //response.Close();
+
+            //redirect to home page so that user can start using your application      
+            //return fbso.facebookSO.name;
+            return text;
+        }
 
 
 
