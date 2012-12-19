@@ -61,7 +61,7 @@
                       image.src = 'http://graph.facebook.com/' + user.id + '/picture';
                       var significant_other = user.relationship_status;
                       var name = document.getElementById('name');
-                      name.innerHTML = user.name + ' loves ' + significant_other
+                      name.innerHTML = user.name + ' loves ' + "@Session["SO"]"; // significant_other
                   }
               });
           }
