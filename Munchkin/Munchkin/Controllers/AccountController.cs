@@ -251,7 +251,16 @@ namespace Munchkin.Controllers
                 try
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
+                    
                     WebSecurity.Login(model.UserName, model.Password);
+
+                    UsersContext uc = new UsersContext();
+
+                    var up = (from x in uc.UserProfiles where x.UserName == model.UserName select x).FirstOrDefault();
+                    up.SignificantOther = model.SignificantOther;
+                    uc.SaveChanges();
+
+
                     return RedirectToAction("Index", "Home");
                 }
                 catch (MembershipCreateUserException e)

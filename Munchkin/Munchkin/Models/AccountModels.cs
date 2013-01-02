@@ -12,8 +12,8 @@ namespace Munchkin.Models
     public class UsersContext : DbContext
     {
         public UsersContext()
-            : base("MunchkinDB")
-            //: base("DefaultConnection")
+            //: base("MunchkinDB")
+            : base("DefaultConnection")
         {
         }
 
@@ -27,6 +27,7 @@ namespace Munchkin.Models
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
         public string UserName { get; set; }
+        public string SignificantOther { get; set; }
     }
 
     public class RegisterExternalLoginModel
@@ -85,9 +86,14 @@ namespace Munchkin.Models
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
+
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = "S O")]
+        public string SignificantOther { get; set; }
+
     }
 
     public class ExternalLogin
