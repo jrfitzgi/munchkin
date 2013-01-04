@@ -35,4 +35,7 @@ http://blogs.msdn.com/b/sqlazure/archive/2010/06/21/10028038.aspx
 http://technet.microsoft.com/en-us/magazine/hh351833.aspx
 http://blog.osbornm.com/archive/2010/07/21/using-simplemembership-with-asp.net-webpages.aspx
 
+azure
+http://blogs.msdn.com/b/usisvde/archive/2012/02/06/msdn-article-building-a-massively-scalable-platform-for-consumer-devices-on-windows-azure.aspx
+
 
